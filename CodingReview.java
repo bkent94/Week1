@@ -34,7 +34,7 @@ public class CodingReview {
 //..
         public static void findDuplicates(List<String> strList){
 
-            List<String> strDuplicates = new ArrayList<String>();
+            List<String> strDuplicates = new ArrayList<>();
 
             for(int i=0;i<strList.size();i++){
 
@@ -49,14 +49,14 @@ public class CodingReview {
                 }
 
             }
-
+            System.out.println(strDuplicates);
         }
 
 
         public static boolean checkforPalindrome(String str){
 
             int i=0;
-            int j=str.length();
+            int j=str.length()-1;
             boolean isPalindrome=true;
 
             while(!(i>=j)){
@@ -109,7 +109,7 @@ public class CodingReview {
 
             for(int i=0;i<str1.length();i++){
                 for(int j=0;j<str2.length();j++){
-                    if(str1.charAt(i)==str2.charAt(j)){
+                    if(str1.toUpperCase().charAt(i)==str2.toUpperCase().charAt(j)){
                         duplicateFound=true;
                     }
                 }
@@ -122,10 +122,15 @@ public class CodingReview {
             return areAnagrams;
         }
 
-        public static void printMultiplicationTable(int[][]multiplicationTable){
+        public static void printMultiplicationTable(){
+            int[][]multiplicationTable = new int[10][10];
+            for(int i=0;i<10;i++){
+                multiplicationTable[0][i]=i+1;
+            }
+
             for(int i=1;i<multiplicationTable.length;i++){
                 for(int j=0;j<multiplicationTable.length;j++){
-                    multiplicationTable[i][j]*=multiplicationTable[i-1][j];
+                    multiplicationTable[i][j]=multiplicationTable[0][i]*multiplicationTable[0][j];
                 }
             }
 
@@ -133,12 +138,38 @@ public class CodingReview {
                 for(int n:a){
                     System.out.print(n+" ");
                 }
+                System.out.println();
             }
+
+
         }
 
     public static void main(String[] args) {
-        int[][]multiplicationTable = {{1,2,3,4,5,6,7,8,9,10}};
-        printMultiplicationTable(multiplicationTable);
+        System.out.println("Problem 1:");
+            ArrayList<String> strList = new ArrayList<>();
+            strList.add("cat");
+            strList.add("dog");
+            strList.add("cat");
+
+            findDuplicates(strList);
+
+        System.out.println("Problem 2:");
+            String palindrome="abba";
+        System.out.println(checkforPalindrome(palindrome));
+
+        palindrome="abbca";
+        System.out.println(checkforPalindrome(palindrome));
+
+        System.out.println("Problem 3:");
+        for(int i=0;i<=20;i++)
+        fizzBuzz(i);
+
+        System.out.println("Problem 4:");
+        System.out.println(findAnagrams("coat","taco"));
+
+        System.out.println("Problem 5:");
+
+        printMultiplicationTable();
     }
 
 
